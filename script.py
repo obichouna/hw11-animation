@@ -187,23 +187,6 @@ def run(filename):
                 matrix_mult( stack[-1], tmp )
                 draw_lines(tmp, screen, zbuffer, color)
                 tmp = []
-            elif c == 'mesh':
-                mesh = open(args[0], 'rU')
-                vertices = [[0, 0, 0]]
-                line = mesh.readline()
-                while line != None:
-                    line.split(' ')
-                    if (line[0] == 'v'):
-                        vertices.append(line[1:])
-                    elif(line[0] == 'f'):
-                        face_vertices = [vertices[i] for i in line[1:]]
-                        anchor = face_vertices[0]
-                        for i in range(2, len(face_vertices) - 1):
-                            tmp.append(anchor)
-                            tmp.append(vertices[i - 1])
-                            tmp.append(vertices[i])
-                    draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect))
-                    tmp = []
             elif c == 'move':
                 tmp = make_translate(args[0], args[1], args[2])
                 matrix_mult(stack[-1], tmp)
